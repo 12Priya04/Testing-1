@@ -43,7 +43,6 @@ public class CreateJobViewDisplay implements CreateJobViewPresenter.Display {
     private TextBox jobName = new TextBox();
     private ExtendedListBox priorityList = new ExtendedListBox();
     private TextBoxImpl kernel = new TextBoxImpl();
-    private TextBoxImpl kernel_cmdline = new TextBoxImpl();
     private TextBox timeout = new TextBox();
     private TextBox maxRuntime = new TextBox();
     private TextBox emailList = new TextBox();
@@ -99,7 +98,6 @@ public class CreateJobViewDisplay implements CreateJobViewPresenter.Display {
 
         panel.add(jobName, "create_job_name");
         panel.add(kernel, "create_kernel");
-        panel.add(kernel_cmdline, "create_kernel_cmdline");
         panel.add(timeout, "create_timeout");
         panel.add(maxRuntime, "create_max_runtime");
         panel.add(emailList, "create_email_list");
@@ -170,10 +168,6 @@ public class CreateJobViewDisplay implements CreateJobViewPresenter.Display {
 
     public ITextBox getKernel() {
         return kernel;
-    }
-
-    public ITextBox getKernelCmdline() {
-        return kernel_cmdline;
     }
 
     public HasText getMaxRuntime() {
