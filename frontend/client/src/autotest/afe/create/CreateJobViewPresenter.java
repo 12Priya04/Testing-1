@@ -78,7 +78,6 @@ public class CreateJobViewPresenter implements TestSelectorListener {
         public void setControlFilePanelOpen(boolean isOpen);
         public ICheckBox getRunNonProfiledIteration();
         public ITextBox getKernel();
-        public ITextBox getKernelCmdline();
         public HasText getViewLink();
         public HasCloseHandlers<DisclosurePanel> getControlFilePanelClose();
         public HasOpenHandlers<DisclosurePanel> getControlFilePanelOpen();
@@ -363,14 +362,12 @@ public class CreateJobViewPresenter implements TestSelectorListener {
         profilersPanel.setEnabled(true);
         handleSkipVerify();
         display.getKernel().setEnabled(true);
-        display.getKernelCmdline().setEnabled(true);
     }
 
     protected void disableInputs() {
         testSelector.setEnabled(false);
         profilersPanel.setEnabled(false);
         display.getKernel().setEnabled(false);
-        display.getKernelCmdline().setEnabled(false);
     }
 
     public void initialize() {
@@ -396,8 +393,7 @@ public class CreateJobViewPresenter implements TestSelectorListener {
         };
 
         display.getKernel().addBlurHandler(kernelBlurHandler);
-        display.getKernelCmdline().addBlurHandler(kernelBlurHandler);
-
+        
         KeyPressHandler kernelKeyPressHandler = new KeyPressHandler() {
             public void onKeyPress(KeyPressEvent event) {
                 if (event.getCharCode() == (char) KeyCodes.KEY_ENTER) {
@@ -407,8 +403,7 @@ public class CreateJobViewPresenter implements TestSelectorListener {
         };
 
         display.getKernel().addKeyPressHandler(kernelKeyPressHandler);
-        display.getKernelCmdline().addKeyPressHandler(kernelKeyPressHandler);
-
+        
         populateProfilers();
         updateNonProfiledRunControl();
 
@@ -522,7 +517,6 @@ public class CreateJobViewPresenter implements TestSelectorListener {
         display.getHostless().setValue(false);
         display.getReserveHosts().setValue(false);
         display.getKernel().setText("");
-        display.getKernelCmdline().setText("");
         display.getTimeout().setText(Utils.jsonToString(repository.getData("job_timeout_default")));
         display.getMaxRuntime().setText(
                 Utils.jsonToString(repository.getData("job_max_runtime_hrs_default")));
